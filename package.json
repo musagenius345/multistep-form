@@ -19,6 +19,7 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
+    "@types/node": "^20.8.9",
     "eruda": "^3.0.1"
   }
 }
