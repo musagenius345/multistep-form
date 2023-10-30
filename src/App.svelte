@@ -1,47 +1,44 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+  import eruda from 'eruda'
+  import SideBar from "$org/SideBar.svelte";
+  import Main from '$org/Main.svelte'
+
+
+  eruda.init()
 </script>
-
-<main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
-
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
-</main>
-
+<svelte:head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+</svelte:head>
+<div class="grid grid-space offset">
+  <SideBar></SideBar>
+  <Main></Main>
+</div>
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
+  :global(:root){
+   --marine-blue: hsl(213, 96%, 18%);
+   --purplish-blue: hsl(243, 100%, 62%);
+   --pastel-blue: hsl(228, 100%, 84%);
+   --light-blue: hsl(206, 94%, 87%);
+   --strawberry-red: hsl(354, 84%, 57%);
+   --cool-gray: hsl(231, 11%, 63%);
+   --light-gray: hsl(229, 24%, 87%);
+   --magnolia: hsl(217, 100%, 97%);
+   --alabaster: hsl(231, 100%, 99%);
+   --white: hsl(0, 0%, 100%);
   }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
+
+  :global(body){
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--white);
   }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
+   .offset{ 
+     padding: 15px;
+   }
+
+   .grid-space{
+     grid-template-columns: 1fr 3fr;
+     grid-template-rows: 1fr;   
+   }
 </style>
