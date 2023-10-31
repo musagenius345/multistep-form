@@ -1,8 +1,10 @@
 <script>
   import ButtonGroup from '$mol/ButtonGroup.svelte'
+  import Heading from '$mol/Heading.svelte'
 </script>
 
 <main class="main">
+  <Heading title="Step One" subtitle="Step One Subtitle"/>
   <ButtonGroup />
 </main>
 
