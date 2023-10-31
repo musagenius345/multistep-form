@@ -4,7 +4,7 @@
 
 <div class="flex">
   <Button transparent="true">Go Back</Button>
-  <Button>Next Step</Button>
+  <Button end="true">Next Step</Button>
 </div>
 
 <style>

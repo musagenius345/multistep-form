@@ -2,8 +2,8 @@
   import StepTitle from '$atom/StepTitle.svelte'
   import StepSubtitle from "$atom/StepSubtitle.svelte";
 
-  export let title = 'Title'
-  export let subtitle = 'This is a subtitle'
+  export let title = 'Personal info'
+  export let subtitle = 'Please provide your name, email address, and phone number.'
 </script>
 <div>
    <StepTitle>{title}</StepTitle>
