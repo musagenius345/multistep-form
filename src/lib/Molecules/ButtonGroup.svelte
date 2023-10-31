@@ -3,7 +3,7 @@
   import { currentStep } from '$store/store'
   let hidden
   function nextStep(){
-    currentStep.update(n => ( n < 5 ? n + 1: 5))
+    currentStep.update(n => ( n < 4 ? n + 1: 4))
   }
 
 function prevStep(){
@@ -22,7 +22,7 @@ $:{
 
 <div class="flex">
   <Button on:click={prevStep} hidden={hidden}  transparent="true">Go Back</Button>
-  <Button on:click={nextStep}>{$currentStep < 5 ? 'Next Step' : 'Confirm' }</Button>
+  <Button on:click={nextStep}>{$currentStep < 4 ? 'Next Step' : 'Confirm' }</Button>
 </div>
 
 <style>
