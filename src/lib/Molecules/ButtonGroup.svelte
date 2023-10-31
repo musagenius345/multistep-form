@@ -22,7 +22,7 @@ $:{
 
 <div class="flex">
   <Button on:click={prevStep} hidden={hidden}  transparent="true">Go Back</Button>
-  <Button on:click={nextStep} end="true">{$currentStep < 5 ? 'Next Step' : 'Confirm' }</Button>
+  <Button on:click={nextStep}>{$currentStep < 5 ? 'Next Step' : 'Confirm' }</Button>
 </div>
 
 <style>

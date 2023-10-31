@@ -9,6 +9,7 @@
 <style>
   aside{
     color: var(--white, #FFFFFF);
+    padding: 2.5em 1.5em;
     background: url('/images/bg-sidebar-desktop.svg') no-repeat center / cover; 
     border-radius: 12px;
     min-height: 100vh;
