@@ -3,7 +3,7 @@
   export let end = false
 </script>
 
-<button class:transparent class:end>
+<button on:click class:transparent class:end>
   <slot>Button</slot>
 </button>
 

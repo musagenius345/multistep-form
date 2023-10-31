@@ -1,4 +1,7 @@
-<script>
+<script lang="ts">
+  import { slide } from 'svelte/transition'
+  import { circIn } from 'svelte/easing'
+  import { currentStep } from '$store/store'
   import ButtonGroup from '$mol/ButtonGroup.svelte'
   import Heading from '$mol/Heading.svelte'
   import StepOne from '$mol/StepOne.svelte'
@@ -6,7 +9,14 @@
 
 <main class="main">
   <Heading />
-  <StepOne />
+  {#key $currentStep}
+  {@debug $currentStep}
+    <div transition:slide={{duration: 600, delay: 100, easing: circIn}}>
+      {#if $currentStep === 1}
+        <StepOne />
+      {/if}
+    </div>
+  {/key}
   <ButtonGroup />
 </main>
 
