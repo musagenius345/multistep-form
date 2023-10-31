@@ -30,8 +30,8 @@
   }
 
   :global(body){
-    font-family: 'Ubuntu', sans-serif;
-    color: var(--white);
+    --font-family: 'Ubuntu', sans-serif;
+    --color: var(--white);
   }
    .offset{ 
      padding: 15px;

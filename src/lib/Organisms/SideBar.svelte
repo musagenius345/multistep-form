@@ -1,9 +1,16 @@
-<script>
+<script lang="ts">
+  import { currentStep } from '$store/store'
   // your script goes here
-  import SideBarNum from '$atom/SideBarNum.svelte'
+  import SideBarItem from '$mol/SideBarItem.svelte'
+
 </script>
 <aside>
-  <SideBarNum />
+  {#key $currentStep}
+  <SideBarItem num="1" infoTitle="step 1" infoSubtitle="your info"/>
+  <SideBarItem num="2" infoTitle="step 2" infoSubtitle="select plan"/>
+  <SideBarItem num="3" infoTitle="step 3" infoSubtitle="add-ons"/>
+  <SideBarItem num="4" infoTitle="step 4" infoSubtitle="summary"/>
+ {/key}
 </aside>
 
 <style>
