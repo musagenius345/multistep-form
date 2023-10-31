@@ -1,9 +1,9 @@
 <script>
   // your script goes here
-  //import Img from '/images/bg-sidebar-desktop.svg'
+  import SideBarNum from '$atom/SideBarNum.svelte'
 </script>
 <aside>
-<p>Hello</p>
+  <SideBarNum />
 </aside>
 
 <style>

@@ -14,6 +14,7 @@ export default defineConfig({
       '$org': normalizePath('src/lib/Organisms'),
       '$atom': normalizePath('src/lib/Atoms'),
       '$mol': normalizePath('src/lib/Molecules'),
+      '$store': normalizePath('src/lib/store'),
     },
   },
 })
