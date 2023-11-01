@@ -5,6 +5,7 @@
   import ButtonGroup from '$mol/ButtonGroup.svelte'
   import Heading from '$mol/Heading.svelte'
   import StepOne from '$mol/StepOne.svelte'
+  import StepTwo from '$mol/StepTwo.svelte'
   let title, subtitle
 
 
@@ -18,6 +19,9 @@
     <div in:blur={{duration: 200, delay: 200, easing: circIn}} out:fade={{duration: 200, delay: 0, easing: linear}}>
       {#if $currentStep === 1}
         <StepOne />
+      {/if}
+      {#if $currentStep === 2}
+        <StepTwo />
       {/if}
     </div>
   {/key}
