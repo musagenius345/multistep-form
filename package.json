@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@types/node": "^20.8.9",
-    "eruda": "^3.0.1"
+    "eruda": "^3.0.1",
+    "svelte-multistep-form": "^0.0.6"
   }
 }
