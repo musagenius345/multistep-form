@@ -18,6 +18,12 @@
 
   .transparent{
     background-color: inherit;
+    color: var(--cool-gray);
+    border: 0;
+
+  }
+
+  .transparent:is(:hover, :focus){
     color: var(--marine-blue);
   }
 
