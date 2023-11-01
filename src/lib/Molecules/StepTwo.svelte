@@ -14,6 +14,7 @@
     selectedOption = { heading, price };
   }
   let period = 'mo'
+  $: period
   function changePeriod(){
     if(period === 'mo'){
       period = 'yr'
@@ -26,11 +27,10 @@
 
 
 <fieldset class="flex col">
-    {period}
   <div class="plan">
   {#each options as {heading, price, src}}
       <!-- <Card {heading} alt="{heading} tier icon" {price} {src} selected={selectedOption === { label, price }} onSelect={handleSelect}/> -->
-      <Card {heading} alt="{heading} tier icon" {period} {price} {src}/>
+      <Card {heading} alt="{heading} tier icon" {period} price={period === 'mo' ? price : price * 10} {src}/>
   {/each}
   </div>
   <div class="toggle">

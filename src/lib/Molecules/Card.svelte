@@ -19,6 +19,9 @@
   </div>   
    <h4>{heading}</h4>
    <p>${price}/{period}</p>
+   {#if period === 'yr'}
+    <p class="yr">2 months free</p>
+  {/if}
 </div>
 
   <style>
@@ -26,6 +29,11 @@
    color: var(--marine-blue);
     padding: 0;
     margin: 0;
+  }
+
+   .yr {
+    font-weight: 500;
+    color: var(--marine-blue)
   }
 
   p{
