@@ -29,8 +29,12 @@
 <fieldset class="flex col">
   <div class="plan">
   {#each options as {heading, price, src}}
-      <!-- <Card {heading} alt="{heading} tier icon" {price} {src} selected={selectedOption === { label, price }} onSelect={handleSelect}/> -->
-      <Card {heading} alt="{heading} tier icon" {period} price={period === 'mo' ? price : price * 10} {src}/>
+      <Card 
+        {heading} 
+        alt="{heading} tier icon" 
+        {period} 
+        price={period === 'mo' ? price : price * 10} 
+        {src}/>
   {/each}
   </div>
   <div class="toggle">
