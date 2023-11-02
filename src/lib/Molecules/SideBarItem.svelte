@@ -14,7 +14,6 @@ $:{
     }
   }
 </script>
-{@debug num}
 
 <div>
   <SideBarNum {num} {current}/>
