@@ -22,7 +22,11 @@
       {/if}
       {#if $currentStep === 2}
         <StepTwo />
-      {/if}
+      {/if} 
+    <!--{#if $currentStep === 3}
+        <StepThree />
+      {/if}-->
+
     </div>
   {/key}
   <ButtonGroup />
