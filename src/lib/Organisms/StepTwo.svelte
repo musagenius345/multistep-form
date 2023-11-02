@@ -1,41 +1,58 @@
+
 <script>
-  import Card from '$mol/Card.svelte'
-  import PeriodToggle from '$mol/PeriodToggle.svelte'
-  //import src from 'images/'
+  import Card from '$mol/Card.svelte';
+  import PeriodToggle from '$mol/PeriodToggle.svelte';
   let options = [
-    { heading: 'Arcade', price: 9, src: '/images/icon-arcade.svg' },
-    { heading: 'Advanced', price: 12, src: '/images/icon-advanced.svg' },
-    { heading: 'Pro', price: 15, src: '/images/icon-pro.svg'}
+    { id:1, heading: 'Arcade', price: 9, src: '/images/icon-arcade.svg', active: false },
+    { id: 2, heading: 'Advanced', price: 12, src: '/images/icon-advanced.svg', active: false },
+    { id: 3, heading: 'Pro', price: 15, src: '/images/icon-pro.svg', active: false }
   ];
 
-  let selectedOption = null;
-
-  function handleSelect(label, price) {
-    selectedOption = { heading, price };
+  function findIndexOfActiveOption(options) {
+    return options.findIndex(option => option.active);
   }
-  let period = 'mo'
-  $: period
-  function changePeriod(){
-    if(period === 'mo'){
-      period = 'yr'
-    } else{
-      period = 'mo'
-    }
+  
+
+  let period = 'mo';
+
+   $: getPrice = (price) => period === 'mo' ? price : price * 10
+  
+
+$: indexOfActiveOption = findIndexOfActiveOption(options);
+
+$:console.log("Index of active option:", indexOfActiveOption);
+  function toggleOption(option) {
+    options = options.map((o) => {
+      if (o.id === option.id) {
+        o.active = !o.active;
+      } else {
+        o.active = false;
+      }
+			//console.log(o)
+      return o;
+    });
   }
 
+  function changePeriod() {
+    period = period === 'mo' ? 'yr' : 'mo';
+  }
 </script>
-
 
 <fieldset class="flex col">
   <div class="plan">
-  {#each options as {heading, price, src}}
-      <Card 
-        {heading} 
-        alt="{heading} tier icon" 
-        {period} 
-        price={period === 'mo' ? price : price * 10} 
-        {src}/>
-  {/each}
+    {indexOfActiveOption}
+    {#each options as {id, heading, price, src, active }}
+      <Card
+        {heading}
+        alt="{heading} tier icon"
+        {period}
+        {active}
+        on:click={toggleOption({id, heading, price, src, active})}
+        price={getPrice(price)}
+        {src}
+      >
+      </Card>
+    {/each}
   </div>
   <div class="toggle">
     <PeriodToggle on:click={changePeriod} />

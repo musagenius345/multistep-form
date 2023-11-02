@@ -1,30 +1,35 @@
 <script>
-  // import StepTitle from '$atom/StepTitle.svelte'
-  // import StepSubtitle from '$atom/StepSubtitle.svelte'
  import CardIcon from '$atom/CardIcon.svelte'
   export let src  
   export let alt  
   export let price = 22
   export let heading = 'Heading'
   export let period = 'mo'
-  // export let selected
+  export let active
   // export let onSelect
 </script>
 
-
-<!-- <div class="card"  class:selected on:click={() => onSelect(label, price)}> -->
-<div class="card">
+<button class="card" class:active on:click>
   <div class="icon">
-  <CardIcon {src} {alt}/>
-  </div>   
-   <h4>{heading}</h4>
-   <p>${price}/{period}</p>
-   {#if period === 'yr'}
+    <CardIcon {src} {alt} />
+  </div>
+  <h4>{heading}</h4>
+  <p>${price}/{period}</p>
+  {#if period === 'yr'}
     <p class="yr">2 months free</p>
   {/if}
-</div>
+  <slot></slot>
+</button>
 
   <style>
+  button{
+    all: unset;
+    cursor: pointer;
+    /* user-select: none; */
+  }
+  .active{
+    background-color: var(--magnolia);
+  }
   h4{
    color: var(--marine-blue);
     padding: 0;
