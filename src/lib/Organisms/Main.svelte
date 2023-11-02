@@ -4,8 +4,9 @@
   import { currentStep } from '$store/store'
   import ButtonGroup from '$mol/ButtonGroup.svelte'
   import Heading from '$mol/Heading.svelte'
-  import StepOne from '$mol/StepOne.svelte'
-  import StepTwo from '$mol/StepTwo.svelte'
+  import StepOne from '$org/StepOne.svelte'
+  import StepTwo from '$org/StepTwo.svelte'
+  import StepThree from '$org/StepThree.svelte'
   let title, subtitle
 
 
@@ -23,9 +24,13 @@
       {#if $currentStep === 2}
         <StepTwo />
       {/if} 
-    <!--{#if $currentStep === 3}
+     {#if $currentStep === 3}
         <StepThree />
+      {/if}
+    <!--{#if $currentStep === 4}
+        <StepFour />
       {/if}-->
+
 
     </div>
   {/key}
