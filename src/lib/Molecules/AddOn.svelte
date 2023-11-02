@@ -45,7 +45,7 @@
   }
 .detail{
    text-align: left;
-
+  /* padding-top: 13px; */
   }
 .textCheck{
     display: flex;
