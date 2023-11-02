@@ -35,7 +35,6 @@
     font-weight: 700;
     padding: 0;
     margin: 0;
-    margin-top: 8px;
   }
 .price{
     color: var(--purplish-blue);
@@ -47,7 +46,6 @@
 .detail{
    text-align: left;
 
-    margin-bottom: 8px;
   }
 .textCheck{
     display: flex;
@@ -78,7 +76,7 @@
  
   .selected{
     border: 2px solid var(--purplish-blue);
-    background-color: var(--light-blue);
+    background-color: var(--magnolia);
 
   }
 

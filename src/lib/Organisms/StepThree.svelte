@@ -2,9 +2,9 @@
  import AddOn from '$mol/AddOn.svelte'
 
  const addOns = [
-   { feature: 'Online service', description: 'Access to Multiplayer Games', fee: '10' },
-   { feature: 'Larger storage', description: 'Extra 1TB of cloud save', fee: '20' },
-   { feature: 'Customizable profile', description: 'Customize theme on your profile', fee: '20' }
+   { feature: 'Online service', description: 'Access to Multiplayer Games', fee: 10 },
+   { feature: 'Larger storage', description: 'Extra 1TB of cloud save', fee: 20 },
+   { feature: 'Customizable profile', description: 'Customize theme on your profile', fee: 20 }
  ]
 
 </script>
