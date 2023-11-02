@@ -18,10 +18,12 @@
 </script>
 
 <button class="cover" class:selected on:click={selectAddOn}>
+  <div class="textCheck">
   <input class="checkbox" type="checkbox" checked={isChecked}>
-  <div class="text">
+    <div class="detail">
     <h3>{feature}</h3>
     <p class="desc">{description}</p>
+      </div>
   </div>
   <div >
     <p class="price">+${fee}/yr</p>
@@ -30,15 +32,33 @@
 
 <style>
   h3{
+    font-weight: 700;
     padding: 0;
     margin: 0;
+    margin-top: 8px;
   }
 .price{
-    color: var(--purplish-blue)
+    color: var(--purplish-blue);
+    font-weight: 500;
   }
+  .desc{
+    font-weight: 500;
+  }
+.detail{
+   text-align: left;
 
+    margin-bottom: 8px;
+  }
+.textCheck{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8em;
+  }
   .cover{
     /* all: unset; */
+    padding: .5rem 1.2rem;
+    border-radius: 16px;
     background-color: inherit;
     display: flex;
     justify-content: space-between;
@@ -52,14 +72,13 @@
     --primary: var(--purplish-blue);
   } 
   .cover:is(:focus, :hover){
-    border: 3px solid var(--marine-blue);
-    background-color: var(--pasteel-blue);
+    border: 2px solid var(--marine-blue);
     outline: 0;
   }
  
   .selected{
-    border: 3px solid var(--marine-blue);
-    background-color: var(--pasteel-blue);
+    border: 2px solid var(--purplish-blue);
+    background-color: var(--light-blue);
 
   }
 
