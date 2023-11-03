@@ -7,6 +7,7 @@
 
   <style>
    img{
-     
+     width: 72px;
+     height: 72px;
    }
   </style>
