@@ -27,13 +27,12 @@
     cursor: pointer;
     /* user-select: none; */
   }
-  .active{
-    background-color: var(--magnolia);
-  }
+  
   h4{
    color: var(--marine-blue);
     padding: 0;
     margin: 0;
+    /* margin-bottom: .1em; */
   }
 
    .yr {
@@ -47,17 +46,21 @@
     color: var(--cool-gray);
   }
   .icon{
-    text-align: center;
-    margin-bottom: .4em;
+    /* text-align: center; */
+    margin-bottom: 1.3em;
   }
   .card{
     /* max-width: 400px; */
     border-radius: 12px;
     padding: 1.8em 1.6em;
-    border: 2px solid var(--purplish-blue); 
-
-
-
-
+    border: 2px solid var(--cool-gray); 
   }
+
+  .active{
+    border: 2px solid var(--purplish-blue);
+    background-color: var(--magnolia);
+  }
+
+
+
 </style>

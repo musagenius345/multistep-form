@@ -20,7 +20,7 @@
 
 $: indexOfActiveOption = findIndexOfActiveOption(options);
 
-$:console.log("Index of active option:", indexOfActiveOption);
+// $:console.log("Index of active option:", indexOfActiveOption);
   function toggleOption(option) {
     options = options.map((o) => {
       if (o.id === option.id) {
@@ -28,7 +28,7 @@ $:console.log("Index of active option:", indexOfActiveOption);
       } else {
         o.active = false;
       }
-			//console.log(o)
+			console.log(o)
       return o;
     });
   }
@@ -36,11 +36,13 @@ $:console.log("Index of active option:", indexOfActiveOption);
   function changePeriod() {
     period = period === 'mo' ? 'yr' : 'mo';
   }
+
+  const billingStatus = (period) => period === 'yr' ? true : false
 </script>
 
 <fieldset class="flex col">
   <div class="plan">
-    {indexOfActiveOption}
+    <!-- {indexOfActiveOption} -->
     {#each options as {id, heading, price, src, active }}
       <Card
         {heading}
@@ -55,7 +57,7 @@ $:console.log("Index of active option:", indexOfActiveOption);
     {/each}
   </div>
   <div class="toggle">
-    <PeriodToggle on:click={changePeriod} />
+    <PeriodToggle yearly={billingStatus(period)} on:click={changePeriod} />
   </div>
 </fieldset>
 
