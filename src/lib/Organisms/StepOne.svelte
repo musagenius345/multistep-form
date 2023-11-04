@@ -1,42 +1,33 @@
 <script lang="ts">
- import FormInput from '$atom/FormInput.svelte'
-type FormField = {
-  type: string;
-  name: string;
-  label: string;
-  placeholder: string;
-};
-
-type FormFieldsData = {
-  name: FormField;
-  email: FormField;
-  number: FormField;
-};
-
-const data: FormFieldsData = {
-  name: {
-    type: 'text',
-    name: 'name',
-    label: 'Name',
-    placeholder: 'e.g Stephen King',
-  },
-  email: {
-    type: 'email',
-    name: 'email',
-    label: 'Email',
-    placeholder: 'e.g stephenking@lorem.com',
-  },
-  number: {
-    type: 'number',
-    name: 'number',
-    label: 'Phone Number',
-    placeholder: 'e.g +01 234 567 890',
-  },
-};
+ // import FormInput from '$atom/FormInput.svelte'
+  import { personalInfo } from '$store/personalInfo'
 
 </script>
-  <div>
-{#each Object.values(data) as { type, name, label, placeholder }}
-   <FormInput {type} {name} {label} {placeholder}/>
-{/each}
-</div>
+  <form on:submit|preventDefault={() => console.log(form.data)}>
+
+  <label for="name"><span>Name</span> 
+    <input id="name" type="text" name="name" placeholder="e.g Stephen King" required bind:value={$personalInfo.name} />
+  </label>
+
+  <label for="email"><span>Email Address</span> 
+     <input id="email" type="tel" name="email" placeholder="e.g stephenking@lorem.com" required bind:value={$personalInfo.email} />
+  </label>
+
+  <label for="phoneNumber"><span>Phone number</span> 
+     <input id="phoneNumber" type="tel" name="phone number" placeholder="e.g +1 234 567 89o" required bind:value={$personalInfo.tel} />
+  </label>
+
+</form>
+
+<style>
+ label {
+   color: var(--marine-blue);
+   font-weight: 500;
+ }
+
+ input:not(:placeholder-shown){
+   font-weight: 700;
+   color: var(--marine-blue);
+   
+ }
+</style>
