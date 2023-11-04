@@ -1,19 +1,16 @@
 
 <script lang="ts">
   import { data } from '$store/store'
+  import { optionsStore } from '$store/optionsStore'
   import Card from '$mol/Card.svelte';
   import PeriodToggle from '$mol/PeriodToggle.svelte';
-  let options = [
-    { id:1, heading: 'Arcade', price: 9, src: '/images/icon-arcade.svg', active: false },
-    { id: 2, heading: 'Advanced', price: 12, src: '/images/icon-advanced.svg', active: false },
-    { id: 3, heading: 'Pro', price: 15, src: '/images/icon-pro.svg', active: false }
-  ];
+  let options = $optionsStore 
 
   function findIndexOfActiveOption(options) {
     return options.findIndex(option => option.active);
   }
 
-  function storedPlan(options){
+  function storedPlan(option){
       $data.selectedPlan = options[findIndexOfActiveOption(options)]
   }
   
@@ -22,21 +19,22 @@
 
    $: getPrice = (price) => period === 'mo' ? price : price * 10
   
+  $: $data.selectedPlan = $optionsStore[findIndexOfActiveOption($optionsStore)]
 
-$: indexOfActiveOption = findIndexOfActiveOption(options);
-
-// $:console.log("Index of active option:", indexOfActiveOption);
-  function toggleOption(option) {
-    options = options.map((o) => {
+$:console.log("selected plan:",$data.selectedPlan);
+  
+function toggleOption(option) {
+  optionsStore.update(storeOptions => {
+    return storeOptions.map((o) => {
       if (o.id === option.id) {
         o.active = !o.active;
       } else {
         o.active = false;
       }
-			console.log(o)
       return o;
     });
-  }
+  });
+}
 
   function changePeriod() {
     period = period === 'mo' ? 'yr' : 'mo';
@@ -51,9 +49,11 @@ $: indexOfActiveOption = findIndexOfActiveOption(options);
 <fieldset class="flex col">
   <div class="plan">
     <!-- {indexOfActiveOption} -->
-    {#each options as {id, heading, price, src, active }}
+    {#each $optionsStore as {id, heading, price, src, active }}
+{active}
       <Card
         {heading}
+        id={crypto.randomUUID()}
         alt="{heading} tier icon"
         {period}
         {active}

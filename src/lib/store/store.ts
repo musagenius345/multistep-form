@@ -10,7 +10,7 @@ const intialData = {
   name: null,
   email: null,
 	phoneNumber: null,
-  sectedPlan: null,
+  selectedPlan: null,
   addOns: []
 }
 

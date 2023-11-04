@@ -1,6 +1,7 @@
 <script>
  import CardIcon from '$atom/CardIcon.svelte'
   export let src  
+  export let id  
   export let alt  
   export let price = 22
   export let heading = 'Heading'
@@ -9,7 +10,7 @@
   // export let onSelect
 </script>
 
-<button class="card" class:active on:click>
+<button {id}class="card" class:active on:click>
   <div class="icon">
     <CardIcon {src} {alt} />
   </div>
