@@ -1,29 +1,35 @@
 <script>
   import { addOnStore } from '$store/addOn'
-  export let selected
+  export let selected   
   export let feature 
   export let description
   export let fee
+  export let index
 
+    const dataIndex = $addOnStore.indexOf(findObjectByValue("feature", feature))
   function selectAddOn(){
       if(!selected){
       selected = true
+      $addOnStore[dataIndex].selected = true
     } else {
       selected = false
+      $addOnStore[dataIndex].selected = false
     }
   }
 
   function findObjectByValue(key, value) {
     return $addOnStore.find(obj => obj[key] === value);
   }
+
+  
   
 </script>
 
-<button class="cover" class:selected on:click={selectAddOn}>
+<button class="cover" index class:selected on:click={selectAddOn}>
   <div class="textCheck">
   <input class="checkbox" type="checkbox" checked={selected}>
     <div class="detail">
-    <h3>{feature}</h3>
+    <h3>{feature}{$addOnStore.indexOf(findObjectByValue("feature", feature))}</h3>
     <p class="desc">{description}</p>
       </div>
   </div>

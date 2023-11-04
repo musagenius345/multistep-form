@@ -5,8 +5,8 @@
 </script>
 
 <div class="container">
-  {#each $addOnStore as {feature, description, fee} }
-    <AddOn {feature} {description} {fee} />
+  {#each $addOnStore as {index, feature, description, fee, selected} }
+    <AddOn {feature} {index} {description} {fee} {selected}/>
   {/each}
 </div>
 <style>
