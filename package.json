@@ -27,6 +27,7 @@
     "@types/node": "^20.8.9",
     "eruda": "^3.0.1",
     "svelte-multistep-form": "^0.0.6",
-    "svelte-persisted-store": "^0.7.0"
+    "svelte-persisted-store": "^0.7.0",
+    "validator": "^13.11.0"
   }
 }
