@@ -1,9 +1,13 @@
 <script lang="ts">
   import Button from "$atom/Button.svelte";
-  import { currentStep } from '$store/store'
+  import { currentStep, data } from '$store/store'
   let hidden
   function nextStep(){
+    if($currentStep === 4){
+     $data = intialData
+    } else {
     currentStep.update(n => ( n < 4 ? n + 1: 4))
+    }
   }
 
 function prevStep(){
