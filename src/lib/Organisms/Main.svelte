@@ -10,7 +10,6 @@
   let title, subtitle
 
 
-// export const resetData = () => $data = intialData
 
   
 </script>

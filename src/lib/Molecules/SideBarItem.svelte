@@ -24,7 +24,7 @@ $:{
 <style>
   div {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     gap: 1em;
     margin-block-end: 0.7em;
