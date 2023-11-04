@@ -48,7 +48,7 @@ export const getPrice = (price: number) => $period === 'mo' ? price : price * 10
 <fieldset class="flex col">
   <div class="plan">
     <!-- {indexOfActiveOption} -->
-    {#each $optionsStore as {id, heading, price, src, active }}
+    {#each $optionsStore as {id, heading, price, yearlyPrice, src, active }}
       <Card
         {heading}
         id={crypto.randomUUID()}
@@ -56,7 +56,7 @@ export const getPrice = (price: number) => $period === 'mo' ? price : price * 10
         period={$period}
         {active}
         on:click={toggleOption({id, heading, price, src, active})}
-        price={getPrice(price)}
+        price={$period === 'mo' ? price : yearlyPrice}
         {src}
       >
       </Card>
