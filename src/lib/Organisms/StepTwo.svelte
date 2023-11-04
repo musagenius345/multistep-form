@@ -1,5 +1,6 @@
 
-<script>
+<script lang="ts">
+  import { data } from '$store/store'
   import Card from '$mol/Card.svelte';
   import PeriodToggle from '$mol/PeriodToggle.svelte';
   let options = [
@@ -10,6 +11,10 @@
 
   function findIndexOfActiveOption(options) {
     return options.findIndex(option => option.active);
+  }
+
+  function storedPlan(options){
+      $data.selectedPlan = options[findIndexOfActiveOption(options)]
   }
   
 
@@ -38,6 +43,9 @@ $: indexOfActiveOption = findIndexOfActiveOption(options);
   }
 
   const billingStatus = (period) => period === 'yr' ? true : false
+
+
+
 </script>
 
 <fieldset class="flex col">

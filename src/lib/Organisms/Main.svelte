@@ -1,7 +1,7 @@
 <script lang="ts">
   import { slide, blur, fade } from 'svelte/transition'
   import { circIn, linear } from 'svelte/easing'
-  import { currentStep } from '$store/store'
+  import { currentStep, data } from '$store/store'
   import ButtonGroup from '$mol/ButtonGroup.svelte'
   import Heading from '$mol/Heading.svelte'
   import StepOne from '$org/StepOne.svelte'
@@ -10,6 +10,7 @@
   let title, subtitle
 
 
+// export const resetData = () => $data = intialData
 
   
 </script>
