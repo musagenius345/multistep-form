@@ -1,7 +1,7 @@
 
 <script lang="ts">
   import { data } from '$store/store'
-  import { optionsStore } from '$store/optionsStore'
+  import { optionsStore, period } from '$store/optionsStore'
   import Card from '$mol/Card.svelte';
   import PeriodToggle from '$mol/PeriodToggle.svelte';
   let options = $optionsStore 
@@ -15,9 +15,7 @@
   }
   
 
-  let period = 'mo';
 
-   $: getPrice = (price) => period === 'mo' ? price : price * 10
   
   $: $data.selectedPlan = $optionsStore[findIndexOfActiveOption($optionsStore)]
 
@@ -37,12 +35,13 @@ function toggleOption(option) {
 }
 
   function changePeriod() {
-    period = period === 'mo' ? 'yr' : 'mo';
+    $period = $period === 'mo' ? 'yr' : 'mo';
   }
 
-  const billingStatus = (period) => period === 'yr' ? true : false
+  $: billingStatus = $period === 'yr' ? true : false
 
 
+export const getPrice = (price: number) => $period === 'mo' ? price : price * 10
 
 </script>
 
@@ -50,12 +49,11 @@ function toggleOption(option) {
   <div class="plan">
     <!-- {indexOfActiveOption} -->
     {#each $optionsStore as {id, heading, price, src, active }}
-{active}
       <Card
         {heading}
         id={crypto.randomUUID()}
         alt="{heading} tier icon"
-        {period}
+        period={$period}
         {active}
         on:click={toggleOption({id, heading, price, src, active})}
         price={getPrice(price)}
@@ -65,7 +63,7 @@ function toggleOption(option) {
     {/each}
   </div>
   <div class="toggle">
-    <PeriodToggle yearly={billingStatus(period)} on:click={changePeriod} />
+    <PeriodToggle yearly={billingStatus} on:click={changePeriod} />
   </div>
 </fieldset>
 

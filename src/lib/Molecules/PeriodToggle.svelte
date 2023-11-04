@@ -1,11 +1,12 @@
 <script>
   export let yearly
+  $: checked = yearly
 </script>
 
 <div>
 <label for="switch">
   <span class:monthly={!yearly}>Monthly</span>
-  <input class="switch" type="checkbox" name="switch" on:click role="switch">
+  <input class="switch" {checked} type="checkbox" name="switch" on:click role="switch">
   <span class:yearly>Yearly</span>
 </label>
 </div>
