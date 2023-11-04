@@ -29,7 +29,7 @@
   <div class="textCheck">
   <input class="checkbox" type="checkbox" checked={selected}>
     <div class="detail">
-    <h3>{feature}{$addOnStore.indexOf(findObjectByValue("feature", feature))}</h3>
+    <h3>{feature}</h3>
     <p class="desc">{description}</p>
       </div>
   </div>
