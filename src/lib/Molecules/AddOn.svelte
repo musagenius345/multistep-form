@@ -1,25 +1,27 @@
 <script>
-  export let isChecked = false
-  export let selected = false
+  import { addOnStore } from '$store/addOn'
+  export let selected
   export let feature 
   export let description
   export let fee
 
   function selectAddOn(){
-      if(!isChecked){
-      isChecked = true
+      if(!selected){
       selected = true
     } else {
-      isChecked = false
       selected = false
+    }
   }
+
+  function findObjectByValue(key, value) {
+    return $addOnStore.find(obj => obj[key] === value);
   }
   
 </script>
 
 <button class="cover" class:selected on:click={selectAddOn}>
   <div class="textCheck">
-  <input class="checkbox" type="checkbox" checked={isChecked}>
+  <input class="checkbox" type="checkbox" checked={selected}>
     <div class="detail">
     <h3>{feature}</h3>
     <p class="desc">{description}</p>
