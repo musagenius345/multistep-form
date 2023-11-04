@@ -11,8 +11,9 @@
   }
   </script>
 
-<label for={name}>{label}</label>
- <input id={name} {type} {name} {placeholder} {required} value on:keydow={event => formatPhoneNumber(event.target.value)}/>
+<label for={name}><span>{label}</span> 
+  <input id={name} {type} {name} {placeholder} {required} bind:value={value} />
+</label>
 
 <style>
  label {
