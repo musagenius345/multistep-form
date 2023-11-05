@@ -8,15 +8,19 @@
   let emailWarning = 'Invalid Email';
   
   function validateName() {
-    return isEmpty($personalInfo.name);
+    return isEmpty($personalInfo.name ?? '');
   }
   
+  // function isNullToString(val){
+  //   return val === null ? '' : null
+  // }
+
   function validatePhone() {
-    return !isMobilePhone($personalInfo.tel);
+    return !isMobilePhone($personalInfo.tel ?? '');
   }
   
   function validateEmail() {
-    return !isEmail($personalInfo.email);
+    return !isEmail($personalInfo.email ?? '');
   }
   
   function handleSubmit() {

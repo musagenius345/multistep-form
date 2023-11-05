@@ -41,7 +41,6 @@ function toggleOption(option) {
   $: billingStatus = $period === 'yr' ? true : false
 
 
-export const getPrice = (price: number) => $period === 'mo' ? price : price * 10
 
 </script>
 

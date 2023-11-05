@@ -9,7 +9,7 @@ const initialOptionState = [
 
 export const optionsStore = persisted('selectedOptions', initialOptionState);
 
-export let period = persisted('MultiStep-SFM','mo')
+export let period = persisted('MultiStep-MSF','mo')
 
 
 // export const getPrice = (price: number) => period === 'mo' ? price : yearlyPrice
