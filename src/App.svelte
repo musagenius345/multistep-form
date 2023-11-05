@@ -31,7 +31,7 @@
 
   :global(body){
     --font-family: 'Ubuntu', sans-serif;
-    --color: var(--white);
+    --color: var(--cool-gray);
   }
    .offset{ 
      padding: 15px;

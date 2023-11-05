@@ -1,20 +1,25 @@
 
-// store.ts
-// import { writable } from 'svelte/store';
-import { persisted } from 'svelte-persisted-store'
 
-export const currentStep = persisted("currentStep-MSF", 1)
+import { persisted } from 'svelte-persisted-store';
+import type { AddOnStore } from './addOn';
 
-
-const intialData = {
-  name: null,
-  email: null,
-	phoneNumber: null,
-  selectedPlan: null,
-  addOns: []
+export interface MainStore {
+  name: string | null;
+  email: string | null;
+  phoneNumber: string | null;
+  selectedPlan: any; // Replace 'any' with the appropriate type for selectedPlan
+  addOns: AddOnStore;
 }
 
-// First param `preferences` is the local storage key.
-// Second param is the initial value.
-export const data = persisted('MultiStepFormData', intialData)
+const initialData: MainStore = {
+  name: null,
+  email: null,
+  phoneNumber: null,
+  selectedPlan: null,
+  addOns: []
+};
+
+export const data = persisted('MultiStepFormData', initialData);
+
+
 
