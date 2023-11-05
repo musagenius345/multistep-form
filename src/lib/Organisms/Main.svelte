@@ -7,6 +7,7 @@
   import StepOne from '$org/StepOne.svelte'
   import StepTwo from '$org/StepTwo.svelte'
   import StepThree from '$org/StepThree.svelte'
+  import StepFour from '$org/StepFour.svelte'
   let title, subtitle
 
 
@@ -14,7 +15,7 @@
   
 </script>
 
-<main class="main">
+<form class="main">
   <Heading  {title} {subtitle}/>
   {#key $currentStep}
     <div in:blur={{duration: 200, delay: 200, easing: circIn}} out:fade={{duration: 200, delay: 0, easing: linear}}>
@@ -24,18 +25,16 @@
       {#if $currentStep === 2}
         <StepTwo />
       {/if} 
-     {#if $currentStep === 3}
+      {#if $currentStep === 3}
         <StepThree />
       {/if}
-    <!--{#if $currentStep === 4}
+      {#if $currentStep === 4}
         <StepFour />
-      {/if}-->
-
-
+      {/if}
     </div>
   {/key}
   <ButtonGroup />
-</main>
+</form>
 
 <style>
   .main{
