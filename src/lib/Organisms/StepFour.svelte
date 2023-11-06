@@ -1,23 +1,44 @@
 <script>
-  import { data } from '$store/store'
+  import { data, currentStep } from '$store/store'
+  import { period } from '$store/optionsStore'
+
+  $: price = $period === 'mo' ? $data.selectedPlan.price : $data.selectedPlan.yearlyPrice 
 </script>
 
 <fieldset>
- <label for="plan">
-    <input type="text" id="plan">
-
- </label>
-    <p>{JSON.stringify($data)}</p>
-  {#each [1, 3, 5] as feature } 
-    <label for="addOn">
-      <input type="text" id="addOn" value={feature}>
-        <!-- <p>{fee}</p> -->
-    </label>
+ <div>
+    <p class="plan">{$data.selectedPlan.heading}</p>
+    <p class="plan">{price}</p>
+ </div>
+    <button on:click={() => $currentStep = 2}>Change</button>
+  {#each $data.addOns as {feature, fee } } 
+    <div>    
+        <p class="feature">{feature}</p>
+        <p class="fee">{fee}</p>
+    </div>
  {/each}
  </fieldset>
 
 <style>
-  .fieldset{
+  button{
+    all: unset;
+    cursor: pointer;
+    text-decoration: underline;
+    color: inherit;
+  }
+   
+  button:is(:hover, :focus){
     color: var(--marine-blue);
+  }
+  
+  fieldset{
+    background-color: var(--magnolia);
+  }
+
+  .feature{
+    color: var(--cool-gray);
+  }
+  .fee{
+    color: inherit;
   }
 </style>
