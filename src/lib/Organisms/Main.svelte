@@ -15,7 +15,7 @@
   
 </script>
 
-<form class="main">
+<form class="main" on:submit|preventDefault={console.log("step " + $currentStep + " is done")}>
   <Heading  {title} {subtitle}/>
   {#key $currentStep}
     <div in:blur={{duration: 200, delay: 200, easing: circIn}} out:fade={{duration: 200, delay: 0, easing: linear}}>

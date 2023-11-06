@@ -1,5 +1,6 @@
 <script>
   import { addOnStore } from '$store/addOn'
+  import { data } from '$store/store'
   export let selected   
   export let feature 
   export let description
@@ -20,9 +21,10 @@
   function findObjectByValue(key, value) {
     return $addOnStore.find(obj => obj[key] === value);
   }
+// $data.addOn = $addOnStore[dataIndex].selected === true ? [...$data.addOn, $addOnStore[dataIndex]] : $data.addOn
+  
 
-  
-  
+ 
 </script>
 
 <button class="cover" index class:selected on:click={selectAddOn}>
