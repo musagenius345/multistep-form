@@ -7,7 +7,6 @@
   import StepOne from '$org/StepOne.svelte'
   import StepTwo from '$org/StepTwo.svelte'
   import StepThree from '$org/StepThree.svelte'
-  import StepFour from '$org/StepFour.svelte'
   let title, subtitle
 
 
@@ -25,12 +24,14 @@
       {#if $currentStep === 2}
         <StepTwo />
       {/if} 
-      {#if $currentStep === 3}
+     {#if $currentStep === 3}
         <StepThree />
       {/if}
-      {#if $currentStep === 4}
+    <!--{#if $currentStep === 4}
         <StepFour />
-      {/if}
+      {/if}-->
+
+
     </div>
   {/key}
   <ButtonGroup />
