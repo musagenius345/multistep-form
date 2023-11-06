@@ -2,15 +2,20 @@
   import { data, currentStep } from '$store/store'
   import { period } from '$store/optionsStore'
 
+  // Format Currency 
+  const formatCurrency = amount => new Intl.NumberFormat('en-US', { style: 'currency', minimumFractionDigits: 0, maximumFractionDigits: 0,currency: 'USD' }).format(amount);
+  
+  // Price of selectedplan in a given billing
   $: price = $period === 'mo' ? $data.selectedPlan.price : $data.selectedPlan.yearlyPrice 
-  // Calculate total price including selected plan and add-ons
-  // $: totalAddOnsPrice = $data.addOns.reduce((acc, { fee }) => acc + (fee / 10 * ($period === 'mo' ? 1 : 10)), 0);
-  // $: totalPrice = price + totalAddOnsPrice;
 
-  // $: formattedTotalPrice = formatCurrency(totalPrice);
-const formatCurrency = amount => new Intl.NumberFormat('en-US', { style: 'currency', minimumFractionDigits: 0, maximumFractionDigits: 0,currency: 'USD' }).format(amount);
+  // Calculate total price including selected plan and add-ons
+  $: totalAddOnsPrice = $data.addOns.reduce((acc, { fee }) => acc + (fee / 10 * ($period === 'mo' ? 1 : 10)), 0);
+  $: totalPrice = price + totalAddOnsPrice;
+  $: formattedTotalPrice = formatCurrency(totalPrice);
+
+  // The payment method
   $: billing = $period === 'mo' ? 'Monthly' : 'Yearly'
-  // $: formattedPrice = formatCurrency(price)
+
 </script>
 <div class="container">
 <fieldset class="flex fieldset spacing">
@@ -30,13 +35,16 @@ const formatCurrency = amount => new Intl.NumberFormat('en-US', { style: 'curren
  {/each}
  </div>
  </fieldset>
-  <div class="flex spacing">
+  <div class="flex spacing total">
     <p>Total</p>
-    <p>$1000/{$period}</p>
+    <p class="total-price">{formattedTotalPrice}/{$period}</p>
   </div>
 </div>
 <style>
-  
+  .total-price{
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
   p{
     /* margin: 0; */
   }
@@ -101,5 +109,10 @@ const formatCurrency = amount => new Intl.NumberFormat('en-US', { style: 'curren
 
   .price{
     font-weight: 500;
+  }
+
+  .total > p{
+    color: var(--purplish-blue);
+    --font-size: 1.3rem;
   }
 </style>
