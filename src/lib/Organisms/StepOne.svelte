@@ -6,48 +6,37 @@
   let nameWarning = 'Field required';
   let phoneWarning = 'Invalid Number';
   let emailWarning = 'Invalid Email';
-  function formatPhoneNumber(phoneNumber) {
-      // Remove all non-digit characters from the input string
-      const cleaned = phoneNumber.replace(/\D/g, '');
-      
-      // Format the cleaned number using regex groups
-      const regex = /^(\d{1})(\d{3})(\d{3})(\d{4})$/;
-      const matches = cleaned.match(regex);
 
-      if (matches) {
-          // Format the phone number as per the desired pattern
-          const formattedNumber = `+${matches[1]} ${matches[2]} ${matches[3]} ${matches[4]}`;
-          return formattedNumber;
-      } else {
-          // Handle invalid phone number input
-          return 'Invalid phone number';
-      }
-  } 
+  let isNameValid = true;
+  let isPhoneNumberValid = true;
+  let isEmailValid = true;
+
+  let nameInput;
+  let emailInput;
+  let phoneInput;
+
   function validateName() {
-    return isEmpty($personalInfo.name ?? '');
+    isNameValid = !isEmpty($personalInfo.name ?? '');
+    nameWarning = isNameValid ? '' : 'Name is required';
   }
-  
-  // function isNullToString(val){
-  //   return val === null ? '' : null
-  // }
 
   function validatePhone() {
-    return !isMobilePhone($personalInfo.tel ?? '');
+    isPhoneNumberValid = isMobilePhone($personalInfo.tel ?? '');
+    phoneWarning = isPhoneNumberValid ? '' : 'Invalid Phone Number';
   }
-  
+
   function validateEmail() {
-    return !isEmail($personalInfo.email ?? '');
+    isEmailValid = isEmail($personalInfo.email ?? '');
+    emailWarning = isEmailValid ? '' : 'Invalid Email Address';
   }
-  
+
   function handleSubmit() {
-    if (!validateName() && !validatePhone() && !validateEmail()) {
-      // Form is valid, proceed with form submission
+    validateName();
+    validatePhone();
+    validateEmail();
+
+    if (isNameValid && isPhoneNumberValid && isEmailValid) {
       alert('Form submitted successfully!');
-    } else {
-      // Form is invalid, display validation warnings
-      if (validateName()) nameWarning = 'Name is required';
-      if (validatePhone()) phoneWarning = 'Invalid Phone Number';
-      if (validateEmail()) emailWarning = 'Invalid Email Address';
     }
   }
 </script>
@@ -56,35 +45,34 @@
   <label for="name">
     <div class="flex">
       <span>Name</span>
-      {#if validateName()}
+      {#if isNameValid}
         <span class="warning">{nameWarning}</span>
       {/if}
     </div>
-    <input id="name" type="text" name="name" class:warning={validateName} placeholder="e.g Stephen King"  bind:value={$personalInfo.name} min="1" on:blur={validateName}/>
+    <input bind:this={nameInput} id="name" type="text" name="name" class:warning={!isNameValid} placeholder="e.g Stephen King" required  bind:value={$personalInfo.name} on:input={validateName} />
   </label>
 
   <label for="email">
     <div class="flex">
       <span>Email Address</span>
-      {#if validateEmail()}
+      {#if isEmailValid}
         <span class="warning">{emailWarning}</span>
       {/if}
     </div>
-    <input id="email" type="email" name="email" class:warning={validateEmail} placeholder="e.g stephenking@lorem.com" bind:value={$personalInfo.email} on:blur={validateEmail} />
+    <input bind:this={emailInput} id="email" type="email" name="email" class:warning={!isEmailValid} placeholder="e.g stephenking@lorem.com" required bind:value={$personalInfo.email} on:input={validateEmail} />
   </label>
 
   <label for="phoneNumber">
     <div class="flex">
       <span>Phone Number</span>
-      {#if validatePhone()}
+      {#if isPhoneNumberValid}
         <span class="warning">{phoneWarning}</span>
       {/if}
     </div>
-    <input id="phoneNumber" type="tel" name="phone number" class:warning={validatePhone} placeholder="e.g +1 234 567 890" min="10" bind:value={$personalInfo.tel}  on:blur={validatePhone}/>
+    <input bind:this={phoneInput} id="phoneNumber" type="tel" name="phone number" class:warning={!isPhoneNumberValid} placeholder="e.g +1 234 567 890" min="10" bind:value={$personalInfo.tel} on:input={validatePhone} />
   </label>
-  
-  <!-- <button type="submit">Submit</button> -->
 </form>
+
 
 <style>
   .flex {
@@ -95,7 +83,7 @@
   .warning {
     color: var(--strawberry-red);
     
-    /* border-color: var(--strawberry-red); */
+    border-color: var(--strawberry-red);
   }
 
   input:invalid{
