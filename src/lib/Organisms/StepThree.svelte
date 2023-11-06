@@ -1,7 +1,9 @@
 <script>
  import AddOn from '$mol/AddOn.svelte'
   import { addOnStore } from '$store/addOn'
- 
+  import { data } from '$store/store'
+
+// $data.addOns = $addOnStore.filter( el => el.selected = true)
 </script>
 
 <div class="container">

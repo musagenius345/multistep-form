@@ -12,6 +12,7 @@
       if(!selected){
       selected = true
       $addOnStore[dataIndex].selected = true
+      $data.addOns = [...$addOnStore.filter( el => el.selected === true)]
     } else {
       selected = false
       $addOnStore[dataIndex].selected = false
