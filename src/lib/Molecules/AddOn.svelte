@@ -16,6 +16,7 @@
     } else {
       selected = false
       $addOnStore[dataIndex].selected = false
+      $data.addOns = [...$addOnStore.filter( el => el.selected === true)]
     }
   }
 
