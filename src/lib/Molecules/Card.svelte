@@ -16,9 +16,11 @@
   </div>
   <h4>{heading}</h4>
   <p>${price}/{period}</p>
+<p class="yr">
   {#if period === 'yr'}
-    <p class="yr">2 months free</p>
+    2 months free
   {/if}
+  </p>
   <slot></slot>
 </button>
 
@@ -38,7 +40,8 @@
 
    .yr {
     font-weight: 500;
-    color: var(--marine-blue)
+    color: var(--marine-blue);
+    height: 1rem;
   }
 
   p{
