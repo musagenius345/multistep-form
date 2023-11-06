@@ -21,14 +21,14 @@
 <fieldset class="flex fieldset spacing">
  <div class="flex planDiv">
     <div>
-      <p class="plan">{$data.selectedPlan.heading}({billing})</p>
+      <p class="plan">{$data.selectedPlan.heading} ({billing})</p>
       <button on:click={() => $currentStep = 2}>Change</button>
     </div>
     <p class="price">+{formatCurrency(price)}/{$period}</p>
  </div>
  <div>
   {#each $data.addOns as {feature, fee } } 
-    <div class="flex">    
+    <div class="flex add-on">    
         <p class="feature">{feature}</p>
         <p class="fee">+{formatCurrency($period === 'mo' ? fee / 10 : fee)}/{$period}</p>
     </div>
@@ -36,20 +36,18 @@
  </div>
  </fieldset>
   <div class="flex spacing total">
-    <p>Total</p>
+    <p>Total (per {billing.slice(0, -2).toLowerCase()})</p>
     <p class="total-price">{formattedTotalPrice}/{$period}</p>
   </div>
 </div>
 <style>
-  .total-price{
-    font-weight: 700;
-    font-size: 1.3rem;
-  }
-  p{
-    /* margin: 0; */
-  }
-
-  .planDiv{
+    .fee{
+      font-weight: 500; 
+    }
+    .add-on > p{
+      margin-block: .4em;
+    }
+    .planDiv{
     padding-bottom: .4em;
     border-bottom: 2px solid var(--cool-gray);
   }
@@ -71,7 +69,7 @@
   .plan{
     margin-bottom: 0.2em;
     color: var(--marine-blue);
-    font-weight: 400;
+    font-weight: 700;
     font-size: 1.3rem;
   }
 
@@ -86,7 +84,7 @@
 
   .spacing{
     --margin: 0.5rem 0.8rem;
-    --padding: 0.75rem 0.9125rem;
+    --padding: 1.75rem 2.2125rem;
     margin: var(--margin);
     padding: var(--padding);
 
@@ -110,9 +108,12 @@
   .price{
     font-weight: 500;
   }
-
-  .total > p{
+  .total{
+  --font-size: 1.2rem;
+  }
+  .total-price{
     color: var(--purplish-blue);
     --font-size: 1.3rem;
+    font-weight: 700;
   }
 </style>
