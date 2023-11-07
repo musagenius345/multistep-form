@@ -1,23 +1,32 @@
 
 <script lang="ts">
   import { personalInfo } from '$store/personalInfo';
-  import { isEmpty, isEmail, isMobilePhone } from 'validator';
+  import { isMobilePhone, isEmail, isEmpty } from 'validator';
   
-  let nameWarning = 'Field required';
-  let phoneWarning = 'Invalid Number';
-  let emailWarning = 'Invalid Email';
+  $: nameWarning  = '' 
+  $: phoneWarning = ''
+  $: emailWarning = ''
 
-  let isNameValid = true;
-  let isPhoneNumberValid = true;
-  let isEmailValid = true;
+  $: isNameValid = true;
+  $: isPhoneNumberValid = true;
+  $: isEmailValid = true;
 
   let nameInput;
   let emailInput;
   let phoneInput;
 
   function validateName() {
-    isNameValid = !isEmpty($personalInfo.name ?? '');
-    nameWarning = isNameValid ? '' : 'Name is required';
+    isNameValid = !!(isEmpty($personalInfo.name) ?? '');
+    if(nameInput.value.trim() === ''){
+    nameWarning = 'Name is required'
+      isNameValid = false
+    } else {
+      nameWarning = ''
+      isNameValid = true
+    }
+    
+    //nameWarning = isNameValid ? '' : 'Name is required';
+    // alert(nameInput.value)
   }
 
   function validatePhone() {
@@ -45,9 +54,7 @@
   <label for="name">
     <div class="flex">
       <span>Name</span>
-      {#if isNameValid}
-        <span class="warning">{nameWarning}</span>
-      {/if}
+        <span class="warningMessage">{nameWarning}</span>
     </div>
     <input bind:this={nameInput} id="name" type="text" name="name" class:warning={!isNameValid} placeholder="e.g Stephen King" required  bind:value={$personalInfo.name} on:input={validateName} />
   </label>
@@ -55,9 +62,7 @@
   <label for="email">
     <div class="flex">
       <span>Email Address</span>
-      {#if isEmailValid}
-        <span class="warning">{emailWarning}</span>
-      {/if}
+        <span class="warningMessage">{emailWarning}</span>
     </div>
     <input bind:this={emailInput} id="email" type="email" name="email" class:warning={!isEmailValid} placeholder="e.g stephenking@lorem.com" required bind:value={$personalInfo.email} on:input={validateEmail} />
   </label>
@@ -65,29 +70,33 @@
   <label for="phoneNumber">
     <div class="flex">
       <span>Phone Number</span>
-      {#if isPhoneNumberValid}
-        <span class="warning">{phoneWarning}</span>
-      {/if}
+        <span class="warningMessage">{phoneWarning}</span>
     </div>
     <input bind:this={phoneInput} id="phoneNumber" type="tel" name="phone number" class:warning={!isPhoneNumberValid} placeholder="e.g +1 234 567 890" min="10" bind:value={$personalInfo.tel} on:input={validatePhone} />
   </label>
 </form>
 
-
 <style>
+
   .flex {
     display: flex;
     justify-content: space-between;
   }
   
   .warning {
-    color: var(--strawberry-red);
-    
-    border-color: var(--strawberry-red);
+    border-color: 3px solid var(--strawberry-red);
+    outline: 3px solid var(--strawberry-red);
+    outline-offset: 2px;
+    /* background-color: var(--strawberry-red); */
+    /* opacity: 0.2; */
   }
 
-  input:invalid{
-    border-color: var(--cool-gray);
+  .warningMessage{
+    color: var(--strawberry-red);
+  }
+
+  #name:invalid, #tel:invalid, #email:invalid {
+    border-color: 3px solid var(--strawberry-red);
   }
   
   label {
@@ -100,5 +109,5 @@
     font-weight: 700;
     color: var(--marine-blue);
   }
-  
-  </style>
+</style>
+
