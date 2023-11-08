@@ -31,7 +31,10 @@
   .transparent:is(:hover, :focus){
     color: var(--marine-blue);
   }
-
+  
+  button:is(:focus, :hover){
+    /* background-color: var(--light-blue) */
+  }
   .hidden{
     visibility: hidden;
   }

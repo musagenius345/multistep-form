@@ -8,7 +8,7 @@
   $: nameWarning  = '' 
   $: phoneWarning = ''
   $: emailWarning = ''
-  // TODO rename these vatiables to the validation store keys
+  // TODO rename these variables to the validation store keys
   $: isNameValid = true;
   $: isPhoneNumberValid = true;
   $: isEmailValid = true;
@@ -18,20 +18,17 @@
   let phoneInput;
 
   function validateName() {
-    isNameValid = !!(isEmpty($personalInfo.name) ?? '');
+    isNameValid = !(isEmpty($personalInfo.name) ?? '');
+    $data.name = nameInput.value
     if(nameInput.value.trim() === ''){
     nameWarning = 'Name is required'
       isNameValid = false
-      $validateForm.stepOne.name = true
     } else {
       nameWarning = ''
-      $data.name = nameInput.value
       isNameValid = true
-      $validateForm.stepOne.name = true
     }
     
-    //nameWarning = isNameValid ? '' : 'Name is required';
-    // alert(nameInput.value)
+      $validateForm.stepOne.name = isNameValid
   }
 
   function validatePhone() {
@@ -60,7 +57,7 @@
 </script>
 
 <form on:submit|preventDefault={handleSubmit}>
-  <label for="name">
+    <label for="name">
     <div class="flex">
       <span>Name</span>
         <span class="warningMessage">{nameWarning}</span>

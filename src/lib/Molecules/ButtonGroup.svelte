@@ -11,17 +11,24 @@
     currentStep.update(n => ( n < 4 ? n += 1 : n = 4))
     }
   }
-
+$: console.log(JSON.stringify($validateForm))
 
   $: {
-      if($currentStep === 1 && !($validateForm.stepOne.name) && !($validateForm.stepOne.phoneNumber) && !($validateForm.stepOne.email)){
-      disabled = true
-    } else if($currentStep === 2 && !($data.selectedPlan)){
-       disabled = true
-    } else {
-      disabled = false
+      if ($currentStep === 1) {
+    // Validate step one form fields
+    if (!($validateForm.stepOne.name) || !($validateForm.stepOne.phoneNumber) || !($validateForm.stepOne.email)) {
+        disabled = true; // Disable button if any field is invalid
+    } else{
+        disabled = false
+      }
+} else if ($currentStep === 2) {
+    // Validate step two form fields
+    if (!$data.selectedPlan) {
+        disabled = true; // Disable button if selected plan is invalid
     }
   }
+}
+// Button remains enabled if none of the above conditions are met  }
 
 function prevStep(){
     currentStep.update(n => ( n > 1 ? n - 1: 1))
