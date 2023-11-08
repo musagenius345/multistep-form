@@ -25,7 +25,9 @@ $: console.log(JSON.stringify($validateForm))
     // Validate step two form fields
     if (!$data.selectedPlan) {
         disabled = true; // Disable button if selected plan is invalid
-    }
+    } else {
+        disabled = false
+      }
   }
 }
 // Button remains enabled if none of the above conditions are met  }
