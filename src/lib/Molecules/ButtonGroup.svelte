@@ -12,36 +12,31 @@
     }
   }
 $: console.log(JSON.stringify($validateForm))
-
+$: hidden = $currentStep === 1 ? true : false
   $: {
-      if ($currentStep === 1) {
+    if ($currentStep === 1) {
+       //hidden = true // Hide Go Back button
     // Validate step one form fields
-    if (!($validateForm.stepOne.name) || !($validateForm.stepOne.phoneNumber) || !($validateForm.stepOne.email)) {
-        disabled = true; // Disable button if any field is invalid
-    } else{
+        if (!($validateForm.stepOne.name) || !($validateForm.stepOne.phoneNumber) || !($validateForm.stepOne.email)) {
+          disabled = true; // Disable button if any field is invalid
+       } else{
         disabled = false
-      }
-} else if ($currentStep === 2) {
+       }
+    } else if ($currentStep === 2) {
     // Validate step two form fields
-    if (!$data.selectedPlan) {
+       if (!$data.selectedPlan) {
         disabled = true; // Disable button if selected plan is invalid
-    } else {
+      } else {
         disabled = false
       }
-  }
+   } //else if($currentStep > 1){
+      // hidden = false
 }
 // Button remains enabled if none of the above conditions are met  }
 
 function prevStep(){
     currentStep.update(n => ( n > 1 ? n - 1: 1))
   }
-$:{
-    if($currentStep  === 1){
-       hidden = true
-    } else {
-      hidden = false
-    }
-  } 
 
 
 </script>
