@@ -1,11 +1,13 @@
 <script lang="ts">
   import Button from "$atom/Button.svelte";
   import { validateForm } from '$store/validation'
+  import { submitted } from '$store/submit'
   import { currentStep, data } from '$store/store'
   let hidden
   let disabled = false
   function nextStep(){
     if($currentStep === 4){
+      $submitted = 1
      alert(JSON.stringify($data))
     } else {
     currentStep.update(n => ( n < 4 ? n += 1 : n = 4))

@@ -2,11 +2,13 @@
   import { slide, blur, fade } from 'svelte/transition'
   import { circIn, linear } from 'svelte/easing'
   import { currentStep, data } from '$store/store'
+  import { submitted } from '$store/submit'
   import ButtonGroup from '$mol/ButtonGroup.svelte'
   import Heading from '$mol/Heading.svelte'
   import StepOne from '$org/StepOne.svelte'
   import StepTwo from '$org/StepTwo.svelte'
   import StepThree from '$org/StepThree.svelte'
+  import Submission from '$org/Submission.svelte'
   import StepFour from '$org/StepFour.svelte'
   let title, subtitle
 
@@ -14,7 +16,7 @@
 
   
 </script>
-
+{#if $submitted === 0}
 <form class="main" on:submit|preventDefault={console.log("step " + $currentStep + " is done")}>
   <Heading  {title} {subtitle}/>
   {#key $currentStep}
@@ -35,6 +37,10 @@
   {/key}
   <ButtonGroup />
 </form>
+{/if}
+{#if $submitted === 1}
+  <Submission />
+{/if}
 
 <style>
   .main{
