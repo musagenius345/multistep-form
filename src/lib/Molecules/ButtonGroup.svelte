@@ -14,8 +14,10 @@
 
 
   $: {
-        if($currentStep === 1 && !($validateForm.stepOne.name) && !($validateForm.stepOne.phoneNumber) && !($validateForm.stepOne.email)){
+      if($currentStep === 1 && !($validateForm.stepOne.name) && !($validateForm.stepOne.phoneNumber) && !($validateForm.stepOne.email)){
       disabled = true
+    } else if($currentStep === 2 && !($data.selectedPlan)){
+       disabled = true
     } else {
       disabled = false
     }
