@@ -1,12 +1,14 @@
 
 <script lang="ts">
   import { personalInfo } from '$store/personalInfo';
+  import { data } from '$store/store';
+  import { validateForm } from '$store/validation'
   import { isMobilePhone, isEmail, isEmpty } from 'validator';
   
   $: nameWarning  = '' 
   $: phoneWarning = ''
   $: emailWarning = ''
-
+  // TODO rename these vatiables to the validation store keys
   $: isNameValid = true;
   $: isPhoneNumberValid = true;
   $: isEmailValid = true;
@@ -20,9 +22,12 @@
     if(nameInput.value.trim() === ''){
     nameWarning = 'Name is required'
       isNameValid = false
+      $validateForm.stepOne.name = true
     } else {
       nameWarning = ''
+      $data.name = nameInput.value
       isNameValid = true
+      $validateForm.stepOne.name = true
     }
     
     //nameWarning = isNameValid ? '' : 'Name is required';
@@ -31,11 +36,15 @@
 
   function validatePhone() {
     isPhoneNumberValid = isMobilePhone($personalInfo.tel ?? '');
+    $validateForm.stepOne.phoneNumber = isPhoneNumberValid
+    $data.phoneNumber = phoneInput.value
     phoneWarning = isPhoneNumberValid ? '' : 'Invalid Phone Number';
   }
 
   function validateEmail() {
     isEmailValid = isEmail($personalInfo.email ?? '');
+    $validateForm.stepOne.email = isEmailValid
+    $data.email = emailInput.value  
     emailWarning = isEmailValid ? '' : 'Invalid Email Address';
   }
 
