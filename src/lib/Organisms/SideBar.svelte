@@ -15,14 +15,25 @@
 
 <style>
   aside{
+    --src: url('/images/bg-sidebar-desktop.svg');
     color: var(--white, #FFFFFF);
     padding: 2.5em 1.5em;
-    background: url('/images/bg-sidebar-desktop.svg') no-repeat center / cover; 
+    background: var(--src) no-repeat center / cover; 
     border-radius: 12px;
     min-height: 100vh;
     /* min-height: 100dvh; */
   }
-
+@media (max-width: 375px){
+    aside{
+    position: sticky;
+    --src: url('/images/bg-sidebar-mobile.svg');
+    min-height: unset;
+    max-height: 25vh;
+    max-height: 25dvh;
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
   p{
     color: inherit;
     color: black;

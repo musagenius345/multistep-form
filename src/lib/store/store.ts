@@ -9,7 +9,7 @@ export interface MainStore {
   addOns: AddOnStore;
 }
 
-const initialData: MainStore = {
+export const initialData: MainStore = {
   name: null,
   email: null,
   phoneNumber: null,

@@ -29,4 +29,10 @@ $:{
     gap: 1em;
     margin-block-end: 0.7em;
   }
+
+  @media (max-width: 375px){
+    div{
+      /* flex-direction: column; */
+    }
+  }
 </style>

@@ -1,7 +1,7 @@
 
 import { persisted } from 'svelte-persisted-store';
 
-const initialOptionState = [
+export const initialOptionState = [
   { id: 1, heading: 'Arcade', price: 9, yearlyPrice: 90, src: '/images/icon-arcade.svg', active: false },
   { id: 2, heading: 'Advanced', price: 12, yearlyPrice: 120, src: '/images/icon-advanced.svg', active: false },
   { id: 3, heading: 'Pro', price: 15, yearlyPrice: 150, src: '/images/icon-pro.svg', active: false }

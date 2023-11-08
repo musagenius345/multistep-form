@@ -50,4 +50,12 @@
     justify-content: space-between;
     gap: 0.8em;
   }
+
+  @media (max-width: 375px){
+    .main{
+      margin: var(--space-xs);
+      padding: var(--space-xs);
+      background-color: var(--magnolia);
+    }
+  } 
 </style>

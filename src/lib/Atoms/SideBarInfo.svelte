@@ -26,4 +26,11 @@
     font-size: 1.1rem;
     font-weight: 500;
   }
+
+  
+  @media (max-width: 375px){
+    div{
+      display: none;
+    }
+  }
 </style>

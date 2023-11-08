@@ -20,8 +20,8 @@
   }
   h2{
     /* --font-size: 1.8rem; */
+    color: var(--marine-blue);
     margin: .6em 0;
-    text-align: center;
   }
   p{
     --font-size: 1.3rem;

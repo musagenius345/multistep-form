@@ -1,7 +1,7 @@
 import { persisted } from "svelte-persisted-store";
 
 
-const intialData = {
+export const intialData = {
   name: null,
   email: null,
   tel: null
