@@ -1,10 +1,10 @@
 <script lang="ts">
-  import eruda from 'eruda'
+  // import eruda from 'eruda'
   import SideBar from "$org/SideBar.svelte";
   import Main from '$org/Main.svelte'
 
 
-  eruda.init()
+  // eruda.init()
 </script>
 <svelte:head>
   <title>Multi-Step Form with Svelte</title>
