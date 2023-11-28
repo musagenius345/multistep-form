@@ -12,7 +12,7 @@
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    padding-block: 0.3em;
+    padding-block: 0.15em;
     border: 2px solid var(--light-gray);
     text-align: center;
     font-size: 1.2rem;

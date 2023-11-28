@@ -20,4 +20,4 @@ export const initialData: MainStore = {
 export const data = persisted('MultiStepFormData', initialData);
 
 
-export const currentStep = persisted('currentStep-MSF', 0)
+export const currentStep = persisted('currentStep-MSF', 1)
