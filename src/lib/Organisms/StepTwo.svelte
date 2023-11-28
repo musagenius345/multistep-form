@@ -80,7 +80,13 @@ function toggleOption(option) {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.5rem;
     margin: 1rem 0.4rem;
+  }
+  @media (max-width: 475px){
+    .plan{
+      display: flex;
+      flex-direction: column;
 
+    }
 
 
 

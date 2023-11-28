@@ -17,17 +17,17 @@
   aside{
     --src: url('/images/bg-sidebar-desktop.svg');
     color: var(--white, #FFFFFF);
-    padding: 2.5em 1.5em;
+    padding: 0.8em 1.1em;
     background: var(--src) no-repeat center / cover; 
     border-radius: 12px;
     min-height: 100vh;
     /* min-height: 100dvh; */
   }
-@media (max-width: 375px){
+@media (max-width: 575px){
     aside{
-    position: sticky;
+    /* position: sticky; */
     --src: url('/images/bg-sidebar-mobile.svg');
-    min-height: unset;
+    min-height: 5rem;
     max-height: 25vh;
     max-height: 25dvh;
       display: flex;

@@ -30,9 +30,11 @@ $:{
     margin-block-end: 0.7em;
   }
 
-  @media (max-width: 375px){
+  @media (max-width: 575px){
     div{
       /* flex-direction: column; */
+      margin-block: 0;
+      /* padding-block: 2em; */
     }
   }
 </style>

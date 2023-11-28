@@ -38,4 +38,20 @@
   .hidden{
     visibility: hidden;
   }
+
+  @media( max-width: 575px){
+    button > *{
+      /* max-width: 100%; */
+      text-align: center;
+      text-wrap: none;
+   
+    }
+
+    .hidden{
+      padding-inline-start: 0.5em;
+    }
+    :not(.hidden){
+      /* padding-inline-end: 1em; */
+    }
+  }
 </style>

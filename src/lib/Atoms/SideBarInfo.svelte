@@ -28,7 +28,7 @@
   }
 
   
-  @media (max-width: 375px){
+  @media (max-width: 575px){
     div{
       display: none;
     }

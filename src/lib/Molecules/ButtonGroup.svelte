@@ -51,16 +51,51 @@ function prevStep(){
 
 
 </script>
-
-<div class="flex">
+<div class="btn-container">
+<div class="flex btn-group">
   <Button on:click={prevStep} hidden={hidden}  transparent="true">Go Back</Button>
   <Button on:click={nextStep} {disabled}>{$currentStep < 4 ? 'Next Step' : 'Confirm' }</Button>
 </div>
-
+</div>
 <style>
   .flex{
     display: flex;
     gap: 6em;
     justify-content: space-between;
+  }
+
+  .btn-container{
+    display: contents;
+  }
+
+  @media (max-width: 575px){
+    .btn-group{
+      background-color: var(--white);
+      margin-inline: 0 auto;
+      padding-inline: 2em;
+      padding-block: 1.2em;;
+      /* margin-inline: 30dvw; */
+    }
+
+    .flex{
+      gap: 12rem;
+      justify-content: space-between;
+    }
+
+    .steps{
+      margin-block-end: 0;
+    }
+
+    .btn-container{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      max-width: 100%;
+      width: 100%;
+      display: block;
+      background-color: var(--magnolia);
+      /* padding-inline: 0.21em; */
+      /* padding-block: 1.25em; */
+    }
   }
 </style>

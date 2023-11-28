@@ -20,7 +20,7 @@
 <form class="main" on:submit|preventDefault={console.log("step " + $currentStep + " is done")}>
   <Heading  {title} {subtitle}/>
   {#key $currentStep}
-    <div in:blur={{duration: 200, delay: 200, easing: circIn}} out:fade={{duration: 200, delay: 0, easing: linear}}>
+    <div class='steps' in:blur={{duration: 200, delay: 200, easing: circIn}} out:fade={{duration: 200, delay: 0, easing: linear}}>
       {#if $currentStep === 1}
         <StepOne />
       {/if}
@@ -51,11 +51,22 @@
     gap: 0.8em;
   }
 
-  @media (max-width: 375px){
+  @media (max-width: 575px){
     .main{
       margin: var(--space-xs);
       padding: var(--space-xs);
-      background-color: var(--magnolia);
+      background-color: var(--white);
+      margin-block-end: 8rem;
+      border-radius: 12px;
+
     }
+
+    .steps{
+
+    }
+
+
+      
+    
   } 
 </style>

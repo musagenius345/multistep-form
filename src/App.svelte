@@ -59,6 +59,8 @@
   :global(body){
     --font-family: 'Ubuntu', sans-serif;
     --color: var(--cool-gray);
+    min-height: 100dvh;
+    position: relative;
   }
    .offset{ 
      padding: 15px;
@@ -69,14 +71,17 @@
      grid-template-rows: 1fr;   
    }
 
-  @media (max-width: 375px){
+  @media (max-width: 575px){
+    .offset{
+      padding: 0;
+    }
     .grid-space{
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 3fr;
     }
 
     div{
-      background-color: var(--light-blue);
+      background-color: var(--bg-mobile, #eaf1fb);
     }
     .offset{
       /* padding: var(--space-xs); */

@@ -26,4 +26,10 @@
   p{
     --font-size: 1.3rem;
   }
+
+  @media (max-width: 575px){
+    div{
+      margin-block: 2.5rem;
+    }
+  }
 </style>

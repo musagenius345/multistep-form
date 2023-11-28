@@ -10,7 +10,7 @@
   // export let onSelect
 </script>
 
-<button {id}class="card" class:active on:click>
+<button {id} class="card" class:active on:click>
   <div class="icon">
     <CardIcon {src} {alt} />
   </div>
